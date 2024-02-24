@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Clone Inputs</title>
+</head>
+<body>
+  <input type="text" id="originalInput">
+  <button onclick="cloneInput()">Clone Input</button>
+  <div id="clonedInputsContainer"></div>
+
+  <script>
+    // Initialize an array to store cloned input elements
+    const clonedInputs = [];
+
+    function cloneInput() {
+      const originalInput = document.getElementById('originalInput');
+
+      // Clone the input element
+      const clonedInput = originalInput.cloneNode(true);
+
+      // Push the cloned input into the array
+      clonedInputs.push(clonedInput);
+
+      // Clear the value of the original input
+      originalInput.value = '';
+
+      // Append the cloned input to a container
+      const clonedInputsContainer = document.getElementById('clonedInputsContainer');
+      clonedInputsContainer.appendChild(clonedInput);
+    }
+
+    // Example function to access the values of cloned inputs
+    function accessClonedInputValues() {
+      for (let i = 0; i < clonedInputs.length; i++) {
+        console.log(clonedInputs[i].value);
+      }
+    }
+  </script>
+</body>
+</html>

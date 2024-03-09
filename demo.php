@@ -15,31 +15,16 @@ $html ="
 <html>
 <head>
         <style>
-                .container{
-                        
-                        // background-color:yellow;
-                        width: 8.3in;
-                        height: 100%;
-                }
-                .left{
-                        width: 40%;
-                        height:100%;
-                        background-color:red;
-                }
-                .right{
-                        width:20%;
-                        height:100%;
-                        background-color:blue;
-                }       
+                
         </style>
 </head>
 <body>
         <table class='container'>
                 <tr>
-                        <td style='size:30%;background-color:blue'>
+                        <td style='width:30%;height:100%;background-color:blue'>
                                 HEY THERE
                         </td>
-                        <td style='size:70%;background-color:red'>
+                        <td style='width:70%;background-color:red'>
                                 HEY THERE       
                         </td>
                 </tr>

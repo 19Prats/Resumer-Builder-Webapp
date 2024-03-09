@@ -13,6 +13,31 @@ $summary = $_POST['summary'];
 //get skills
 $skills = $_POST['skills']; 
 
+// get achievements
+$achievements = $_POST['title'];
+$achievements_description = $_POST['description'];
+
+// get education
+$education_school = $_POST['school-name'];
+$education_course = $_POST['degree'];
+$education_place = $_POST['school-city'];
+$education_date_from = $_POST['school-start-date'];
+$education_date_to = $_POST['school-end-date'];
+$education_description = $_POST['school-description'];
+
+// get experinces
+$title_company = $_POST['title-company'];
+$company_name = $_POST['company-name'];
+$company_location = $_POST['company-location'];
+$company_start_date = $_POST['company-start-date'];
+$company_end_date = $_POST['company-end-date'];
+$company_description = $_POST['company-description'];
+
+// get proejcts
+$project_name = $_POST['project-name'];
+$project_link = $_POST['project-link'];
+$project_description = $_POST['project-description'];
+
 require_once('./dompdf/autoload.inc.php');      
 
 use Dompdf\Dompdf;
@@ -35,17 +60,15 @@ $html = "
                 }
                 .left{
                         background-color: rgb(7,72,70);
-                        height:100%;
-                        width: 30%;
+                        height:10.68in;
+                        width: 2.5in;
                         color:white;
                 }
                 .right{
-                        background-color:blue;
-                        width:70%;
+                        width:4in;
                 }
                 .image-container{
-                        height:2.5in;
-                        background-color:red;
+                        
                 }
                 .name{
                       width:100%;
@@ -121,10 +144,66 @@ foreach ($skills as $skill){
 $html .= "</div>
                 </td>
                 <td class='right'>
-                        <div class='ahivements-section'>
+                        <div class='achivements-section'>
                                 <div class='right-heading'>
-                                        ACHIEVEMENT
+                                        ACHIEVEMENTS
                                 </div>
+                                <div class='right-sub-section'>";
+
+foreach ($achievements as $index => $achievement){
+        $html .= "<div style='margin-left:0.3in; margin-bottom:0.1in;background-color:rgb(240, 240, 240)'> $achievement</div>";
+        $html .= "<div style='margin-left:0.3in; margin-bottom:0.1in;'> $achievements_description[$index]</div>";
+}
+
+$html .= "                      </div>
+                        </div>
+                        
+                        <div class='education-section'>
+                                <div class='right-heading'>
+                                        EDUCATION
+                                </div>
+                                <div class='right-sub-section'>";
+
+foreach ($education_school as $index => $school){
+        $html .= "<div style='margin-left:0.3in; margin-bottom:0.1in;background-color:rgb(240, 240, 240)'>$school</div>";
+        $html .= "<div style='margin-left:0.3in;margin-bottom:0.1in;'>$education_course[$index]     $education_place[$index]</div>";
+        $html .=        "<div style='margin-left:0.3in; margin-bottom:0.1in;'><span style='background-color:rgb(7,72,70);color:white;padding:0.05in;'>$education_date_from[$index]</span>     <span style='background-color:rgb(7,72,70);color:white;padding:0.05in;'>$education_date_to[$index]</span></div>";
+        $html .= "<div style='margin-left:0.3in; margin-bottom:0.1in;'>$education_description[$index]</div>";
+}
+
+$html .= "                      </div>
+                        </div>
+
+                        <div class='experiences-section'>
+                                <div class='right-heading'>
+                                        EXPERIENCES
+                                </div>
+                                <div class='right-sub-section'>";
+
+foreach ($title_company as $index => $title){
+        $html .= "<div style='margin-left:0.3in;margin-bottom:0.1in;background-color:rgb(240, 240, 240)'>$title</div>";
+        $html .= "<div style='margin-left:0.3in;margin-bottom:0.1in;'><span style='margin-bottom:0.1in;'>$company_name[$index]</span> <span style='margin-bottom:0.1in;font-style:italic;'>$company_location[$index]</span>  
+        <div style='margin-bottom:0.1in;margin-top:0.1in'><span style='background-color:rgb(7,72,70);color:white;padding:0.05in;margin:0.1in;'>$company_start_date[$index]</span><span style='background-color:rgb(7,72,70);color:white;padding:0.05in;'>$company_end_date[$index]</span></div>
+        <div>$company_description[$index]</div>
+        </div>";
+}
+
+$html .= "                      </div>
+                        </div>
+
+                        <div class='projects-section'>
+                                <div class='right-heading'>
+                                        PROJECTS
+                                </div>
+                                <div class='right-sub-section'>";
+
+foreach ($project_name as $index => $project){
+        $html .= "<div style='margin-left:0.3in;margin-bottom:0.1in;background-color:rgb(240, 240, 240)'>$project</div>
+        <div style='margin-left:0.3in;margin-bottom:0.1in;'>$project_link[$index]</div>
+        <div style='margin-left:0.3in;margin-bottom:0.1in;'>$project_description[$index]</div>";
+}
+
+$html .= "                      </div>
                         </div>
                 </td>
         </tr>

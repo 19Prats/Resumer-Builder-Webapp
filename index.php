@@ -74,11 +74,11 @@
                         <div class="row  d-flex" id="row-achievements">
                             <div class="col-sm-6">
                                 <label for="title">Title</label>
-                                <input type="text" id="title" name="title">
+                                <input type="text" id="title" name="title[]">
                             </div>
                             <div class="col-sm-6">
                                 <label for="description">Description</label>
-                                <input type="text" id="description" name="description" onblur="fillAchievement()">
+                                <input type="text" id="description" name="description[]" onblur="fillAchievement()">
                             </div>
                         </div>
                     </div>
@@ -95,27 +95,27 @@
                         <div class="row  d-flex" id="row-experience">
                             <div class="col-sm-4">
                                 <label for="title-company">Title</label>
-                                <input type="text" id="title-company" name="title-company">
+                                <input type="text" id="title-company" name="title-company[]">
                             </div>
                             <div class="col-sm-4">
                                 <label for="company-name">Company/Organization</label>
-                                <input type="text" id="company-name" name="company-name">
+                                <input type="text" id="company-name" name="company-name[]">
                             </div>
                             <div class="col-sm-4">
                                 <label for="company-location">Location</label>
-                                <input type="text" id="company-location" name="company-location">
+                                <input type="text" id="company-location" name="company-location[]">
                             </div>
                             <div class="col-sm-4">
                                 <label for="company-start-date">Start Date</label>
-                                <input type="date" id="company-start-date" name="company-start-date">
+                                <input type="date" id="company-start-date" name="company-start-date[]">
                             </div>
                             <div class="col-sm-4">
                                 <label for="company-end-date">End Date</label>
-                                <input type="date" id="company-end-date" name="company-end-date">
+                                <input type="date" id="company-end-date" name="company-end-date[]">
                             </div>
                             <div class="col-sm-4">
                                 <label for="company-description">Description</label>
-                                <input type="text" id="company-description" name="company-description" onblur="fillCompany()">
+                                <input type="text" id="company-description" name="company-description[]" onblur="fillCompany()">
                             </div>
                         </div>
                     </div>
@@ -130,28 +130,28 @@
                     <div class="section">
                         <div class="row  d-flex" id="row-education">
                             <div class="col-sm-4">
-                                <label for="school-name">School</label>
-                                <input type="text" id="school-name" name="school-name">
+                                <label for="">School</label>
+                                <input type="text" id="school-name" name="school-name[]">
                             </div>
                             <div class="col-sm-4">
                                 <label for="degree">Degree</label>
-                                <input type="text" id="degree" name="degree">
+                                <input type="text" id="degree" name="degree[]">
                             </div>
                             <div class="col-sm-4">
                                 <label for="school-city">City</label>
-                                <input type="text" id="school-city" name="school-city">
+                                <input type="text" id="school-city" name="school-city[]">
                             </div>
                             <div class="col-sm-4">
                                 <label for="school-start-date">Start Date</label>
-                                <input type="date" id="school-start-date" name="school-start-date">
+                                <input type="date" id="school-start-date" name="school-start-date[]">
                             </div>
                             <div class="col-sm-4">
                                 <label for="school-end-date">End Date</label>
-                                <input type="date" id="school-end-date" name="school-end-date">
+                                <input type="date" id="school-end-date" name="school-end-date[]">
                             </div>
                             <div class="col-sm-4">
                                 <label for="school-description">Description</label>
-                                <input type="text" id="school-description" name="school-description" onblur="fillEducation()">
+                                <input type="text" id="school-description" name="school-description[]" onblur="fillEducation()">
                             </div>
                         </div>
                     </div>
@@ -167,15 +167,15 @@
                         <div class="row  d-flex" id="row-projects">
                             <div class="col-sm-4">
                                 <label for="project-name">Project Name</label>
-                                <input type="text" id="project-name" name="project-name">
+                                <input type="text" id="project-name" name="project-name[]">
                             </div>
                             <div class="col-sm-4">
                                 <label for="project-link">Project Link</label>
-                                <input type="text" id="project-link" name="project-link">
+                                <input type="text" id="project-link" name="project-link[]">
                             </div>
                             <div class="col-sm-4">
                                 <label for="project-description">Description</label>
-                                <input type="text" id="project-description" name="project-description" onblur="fillProject()">
+                                <input type="text" id="project-description" name="project-description[]" onblur="fillProject()">
                             </div>
                         </div>
                     </div>

@@ -220,33 +220,15 @@ function fillProject(){
     }
 }
 
-// document.getElementById("print-button").addEventListener("click", function() {
-//     var containerToPrint = document.getElementById("container-to-print");
-//     var printWindow = window.open("", "_blank");
-//     printWindow.document.open();
-//     printWindow.document.write('<html><head><title>Print</title>');
-//     printWindow.document.write("<link rel='stylesheet' type='text/css' href='resume.css'>");
-//     printWindow.document.write('</head><body>');
-//     printWindow.document.write(containerToPrint.innerHTML);
-//     printWindow.document.write('</body></html>');
-//     printWindow.document.close();
-//     printWindow.print();
-//     printWindow.close();
-// });
-
 const userImageInput = document.getElementById("userimage");
 const imagePreview = document.getElementById("image-preview");
+function putImage(){
+    const selectedFile = userImageInput.files[0];
+        if (selectedFile) {
+            const imageURL = URL.createObjectURL(selectedFile);
+            imagePreview.src = imageURL;
+        } else {
+            imagePreview.src = '';
+        }
+}
 
-    // Add an event listener to the input element to handle the file selection
-    // userImageInput.addEventListener('change', function() {
-    //     const selectedFile = userImageInput.files[0];
-
-    //     if (selectedFile) {
-    //         // Create a URL for the selected image and set it as the src for the image tag
-    //         const imageURL = URL.createObjectURL(selectedFile);
-    //         imagePreview.src = imageURL;
-    //     } else {
-    //         // Clear the image source if no file is selected
-    //         imagePreview.src = '';
-    //     }
-    // });

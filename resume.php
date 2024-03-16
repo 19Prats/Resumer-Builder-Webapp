@@ -1,5 +1,6 @@
 <?php
 
+define("DOMPDF_ENABLE_REMOTE", false);
 // get all the data
 $firstname = $_POST['firstname'];
 $middlename = $_POST['middlename'] == null ? "" : $_POST['middlename'];
@@ -9,6 +10,18 @@ $phone = $_POST['phone'];
 $email = $_POST['email'];
 $address = $_POST['address'];
 $summary = $_POST['summary'];
+
+// get profile pic
+if(isset($_FILES['userimage'])&& $_FILES['userimage']['error'] == 0){
+        //store the image in directory
+        $dir = 'upload/';
+        $temp_image = $_FILES['userimage']['tmp_name'];
+        $target_dir = $dir . basename($_FILES['userimage']['name']);
+        
+        if(move_uploaded_file($temp_image,$target_dir)){ 
+                echo $target_dir;  
+        }
+}
 
 //get skills
 $skills = $_POST['skills']; 
@@ -112,7 +125,7 @@ $html = "
         <tr>
                 <td class='left'>
                         <div class='image-container'>
-
+                                <img src='./temp.jpg'>
                         </div>
                         <div class='name'>
                                 $firstname $middlename $lastname
@@ -131,7 +144,7 @@ $html = "
                                 <div class='email'>$email</div>
                                 <div class='address'>$address</div>
                                 <div class='about'>$summary</div>
-                        </div>
+                        </div>  
 
                         <div class='left-heading'> Skills </div>
                         <div class='left-sub-section'> ";

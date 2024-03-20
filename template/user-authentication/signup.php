@@ -1,9 +1,8 @@
 <?php
 if(isset($_POST['signupbtn'])){
-    // Establishing connection to the database
-    $servername = "localhost"; // Change this to your database server name
+    $servername = "localhost"; 
     $username = "root"; // Change this to your database username
-    $password = "Pratik"; // Change this to your database password
+    $password = ""; // Change this to your database password
     $database = "resume_user_db"; // Change this to your database name
 
     // Create connection
@@ -42,7 +41,7 @@ if(isset($_POST['signupbtn'])){
         // Insert user data into the database
         $sql = "INSERT INTO users VALUES ('$username', '$email', '$password')";
         if ($conn->query($sql) === TRUE) {
-            echo "Sign up successful!";
+            header("Location: login.html");
         } else {
             echo "Error: " . $sql . "<br>" . $conn->error;
         }

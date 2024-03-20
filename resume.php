@@ -1,6 +1,6 @@
 <?php
 
-define("DOMPDF_ENABLE_REMOTE", false);
+define("DOMPDF_ENABLE_REMOTE", true);
 // get all the data
 $firstname = $_POST['firstname'];
 $middlename = $_POST['middlename'] == null ? "" : $_POST['middlename'];
@@ -12,16 +12,23 @@ $address = $_POST['address'];
 $summary = $_POST['summary'];
 
 // get profile pic
-if(isset($_FILES['userimage'])&& $_FILES['userimage']['error'] == 0){
-        //store the image in directory
-        $dir = 'upload/';
-        $temp_image = $_FILES['userimage']['tmp_name'];
-        $target_dir = $dir . basename($_FILES['userimage']['name']);
+if(isset($_FILES['userimage']) && $_FILES['userimage']['error'] == 0) {
+        $target_dir = "./"; // Directory where you want to store the image
+        $target_file = $target_dir . "user.jpg"; // Name of the uploaded image
+        $path = $_FILES['userimage']['tmp_name'];
         
-        if(move_uploaded_file($temp_image,$target_dir)){ 
-                echo $target_dir;  
+        // Move the uploaded file to the specified directory
+        if(move_uploaded_file($path, $target_file)) {
+            echo "Image uploaded successfully.";
+        } else {
+            echo "Failed to upload image.";
         }
-}
+    } else {
+        $path = 'temp.jpg';
+    }
+$type = pathinfo($path, PATHINFO_EXTENSION);
+$data = file_get_contents($path);
+$base64 = 'data:image/' . $type . ';base64,' . base64_encode($data);
 
 //get skills
 $skills = $_POST['skills']; 
@@ -69,7 +76,7 @@ $html = "
 <head>
         <style>
                 body{
-                        font-family: 'Arial', sans-serif;
+                        font-family: Arial;
                 }
                 .left{
                         background-color: rgb(7,72,70);
@@ -124,8 +131,8 @@ $html = "
         <table class='container' >
         <tr>
                 <td class='left'>
-                        <div class='image-container'>
-                                <img src='./temp.jpg'>
+                        <div class='image-container' style='margin-top:0.2in;margin-bottom:0.2in;margin-left:0.6in;'>
+                        <img src='$base64' width='150' height='150'/>
                         </div>
                         <div class='name'>
                                 $firstname $middlename $lastname

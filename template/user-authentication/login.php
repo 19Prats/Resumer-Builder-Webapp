@@ -2,7 +2,7 @@
 if(isset($_POST['loginbtn'])){
     $servername = "localhost";
     $username = "root"; 
-    $password = "Pratik"; 
+    $password = ""; 
     $database = "resume_user_db"; 
 
     $conn = new mysqli($servername, $username, $password, $database);
@@ -11,17 +11,17 @@ if(isset($_POST['loginbtn'])){
         die("Connection failed: " . $conn->connect_error);
     }
 
-    $user = $_POST['username'];
-    $pass = $_POST['password'];
+    $email = $_POST['email'];
+    $pass = $_POST['password']; 
 
-    $user = mysqli_real_escape_string($conn, $user);
+    $email = mysqli_real_escape_string($conn, $email);
     $pass = mysqli_real_escape_string($conn, $pass);
 
-    $sql = "SELECT * FROM users WHERE username='$user' AND password='$pass'";
+    $sql = "SELECT * FROM users WHERE email='$email' AND password='$pass'";
     $result = $conn->query($sql);
 
     if ($result->num_rows > 0) {
-        echo "Login successful!";
+        header("Location: ../../index.html");
     } else {
         echo "Invalid username or password!";
     }
